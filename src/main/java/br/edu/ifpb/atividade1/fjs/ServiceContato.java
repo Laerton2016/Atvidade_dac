@@ -40,7 +40,7 @@ public class ServiceContato
         List<Contato> contatos = contatos();
         List<String> letras = new LinkedList<>();
         for (Contato contato : contatos) {
-            String letra = String.valueOf(contato.getNome().toCharArray()[0]).toUpperCase();
+            String letra = String.valueOf(contato.getNome().toCharArray()[0]);
             if (!letras.contains(letra)){
                 letras.add(letra);
             }

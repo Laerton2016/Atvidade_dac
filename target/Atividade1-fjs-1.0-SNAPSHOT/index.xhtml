@@ -16,7 +16,7 @@
             <h:inputText value="#{contextoContato.contato.dataNascimento}" converter="convert.Data" /><br></br>
             Telefone
             <h:inputText value="#{contextoContato.contato.telefone}" /><br></br>
-            <h:commandButton action="#{contextoContato.contato.salvar()}" value="SALVAR" />
+            <h:commandButton action="#{contextoContato.save()}" value="SALVAR" />
 
             <br></br>
 
@@ -24,7 +24,7 @@
 
             <h:dataTable var="letra" value="#{contextoContato.letras()}">
                 <h:column>#{letra}<br></br>
-                    <h:dataTable var="contato" value="#{contextoContato.findContatoName(letra)}">
+                    <h:dataTable var="contato" value="#{contextoContato.contatosLetra(letra)}">
                         <h:column>#{contato.nome}</h:column>
                         <h:column>#{contato.dataNascimento}</h:column>       
                         <h:column>#{contato.email}</h:column>

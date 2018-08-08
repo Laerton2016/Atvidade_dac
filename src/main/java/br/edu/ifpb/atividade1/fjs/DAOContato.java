@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 /**
  *
@@ -60,7 +61,9 @@ public class DAOContato {
     }
     
     public List<Contato> findByLetra(String letra){
-        Query q = em.createQuery("Select c from Contato c where c.nome like '"+ letra +"%' order by c.nome ");
+        String SQL = "Select c from Contato c where c.nome LIKE '"+ letra + "%'";
+        Query q = em.createQuery(SQL, Contato.class);
+                
         return q.getResultList();
     }
     public void remove(Contato contato)
