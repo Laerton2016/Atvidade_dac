@@ -3,6 +3,8 @@ package br.edu.ifpb.atividade1.fjs;
 import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 
@@ -25,6 +27,7 @@ public class Contato {
     private String email;
     private String nome; 
     private String telefone;
+    @Temporal(TemporalType.DATE)
     private LocalDate dataNascimento;
 
     public String getEmail() {

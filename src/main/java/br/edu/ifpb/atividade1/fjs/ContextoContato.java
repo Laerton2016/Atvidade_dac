@@ -18,6 +18,8 @@ import javax.inject.Named;
 @RequestScoped
 public class ContextoContato {
     private Contato contato = new Contato();
+    private Contato contBusca = new Contato();
+    private String nomeBusca = "";
     private ServiceContato service = new ServiceContato();
     public Contato getContato() {
         return contato;
@@ -36,9 +38,23 @@ public class ContextoContato {
     }
     
     public String findContatoName(String nome){
-        contato = service.findByNome(nome);
+        contBusca = service.findByNome(nome);
         return null;
     }
+
+    public Contato getContBusca() {
+        return contBusca;
+    }
+
+    public void setContBusca(Contato contBusca) {
+        this.contBusca = contBusca;
+    }
+    
+    public String editar(Contato contato){
+        this.contato = contato;
+        return null;
+    }
+    
     
     public String save(){
         service.save(contato);
@@ -56,6 +72,14 @@ public class ContextoContato {
         service.remove(contato);
         contato = new Contato();
         return null;
+    }
+
+    public String getNomeBusca() {
+        return nomeBusca;
+    }
+
+    public void setNomeBusca(String nomeBusca) {
+        this.nomeBusca = nomeBusca;
     }
     
 }

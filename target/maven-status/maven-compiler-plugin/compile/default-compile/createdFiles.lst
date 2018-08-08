@@ -1,0 +1,7 @@
+br\edu\ifpb\atividade1\fjs\ContextoContato.class
+br\edu\ifpb\atividade1\fjs\LocalDatePersistenceConverter.class
+br\edu\ifpb\atividade1\fjs\Contato.class
+br\edu\ifpb\atividade1\fjs\Contato_.class
+br\edu\ifpb\atividade1\fjs\DataConverter.class
+br\edu\ifpb\atividade1\fjs\DAOContato.class
+br\edu\ifpb\atividade1\fjs\ServiceContato.class

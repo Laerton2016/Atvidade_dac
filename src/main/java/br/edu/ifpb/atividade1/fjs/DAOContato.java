@@ -52,7 +52,8 @@ public class DAOContato {
     
     public Contato findByNome (String nome ){
         Query q = em.createQuery("Select c from Contato c where c.nome = '" + nome + "'");
-        return (Contato) q.getSingleResult();
+        Contato c = (Contato) q.getSingleResult();
+        return c;
     }
     
     public List<Contato> findAllByOrderNome(){
@@ -61,10 +62,10 @@ public class DAOContato {
     }
     
     public List<Contato> findByLetra(String letra){
-        String SQL = "Select c from Contato c where c.nome LIKE '"+ letra + "%'";
+        String SQL = "Select c from Contato c where c.nome LIKE '"+ letra.toUpperCase() + "%' or c.nome LIKE '"+ letra.toLowerCase() + "%'";
         Query q = em.createQuery(SQL, Contato.class);
-                
-        return q.getResultList();
+        List<Contato> result = q.getResultList();
+        return result;
     }
     public void remove(Contato contato)
     {

@@ -6,14 +6,18 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form >
             <h2>Cadastro de contato</h2>
             Email    
             <h:inputText value="#{contextoContato.contato.email}" /><br></br>
             Nome
             <h:inputText value="#{contextoContato.contato.nome}" /><br></br>
             Nascimento
-            <h:inputText value="#{contextoContato.contato.dataNascimento}" converter="convert.Data" /><br></br>
+            <h:inputText  value="#{contextoContato.contato.dataNascimento}" converter="convert.Data">
+            <convertDateTime timeZone="#{usuarioLogadoBean.timeZone}"
+                locale="#{usuarioLogadoBean.locale}"
+                pattern="dd/MM/yyyy HH:mm:ss" />
+            </h:inputText><br></br>
             Telefone
             <h:inputText value="#{contextoContato.contato.telefone}" /><br></br>
             <h:commandButton action="#{contextoContato.save()}" value="SALVAR" />
@@ -26,15 +30,22 @@
                 <h:column>#{letra}<br></br>
                     <h:dataTable var="contato" value="#{contextoContato.contatosLetra(letra)}">
                         <h:column>#{contato.nome}</h:column>
-                        <h:column>#{contato.dataNascimento}</h:column>       
                         <h:column>#{contato.email}</h:column>
-                        <h:column>#{contato.telefone}</h:column>
+                        <h:column>#{contato.dataNascimento}</h:column>
+                        <h:column >#{contato.telefone}</h:column>
+                        <h:column><h:commandButton action="#{contextoContato.editar(contato)}" value="EDITAR" /></h:column>
                     </h:dataTable>
                 </h:column>
             </h:dataTable>
             <br></br>
 
-            <a href="BuscaNome.xhtml">Buscar contato pelo nome</a>
+            <a>Busca por nome</a>
+            Nome    
+            <h:inputText  value="#{contextoContato.nomeBusca}" /><br></br>
+            <h:commandButton action="#{contextoContato.findContatoName(contextoContato.nomeBusca)}" value="BUSCA" />
+            <a>#{contextoContato.contBusca.nome}</a>
+            <a>#{contextoContato.contBusca.email}</a>
+            <a>#{contextoContato.contBusca.telefone}</a>
         </h:form>
     </h:body>
 </html>

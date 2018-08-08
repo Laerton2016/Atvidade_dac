@@ -14,6 +14,7 @@ public class DataConverter implements Converter{
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         
+        
         if(value == null){
             return null;
         }
@@ -25,10 +26,10 @@ public class DataConverter implements Converter{
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        
-        if(value == null){
+        if(value == null)
+        {
             return null;
-        }
+        }       
         return formatter.format((LocalDate)value);
     }
     

@@ -22,4 +22,6 @@
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/jsf" object-type="user" pool-name="post-gre-sql_postgres_postgresPool_1"/>
     <jdbc-resource enabled="true" jndi-name="java:app/JSF1" object-type="user" pool-name="post-gre-sql_postgres_postgresPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/local" object-type="user" pool-name="post-gre-sql_postgres_postgresPool_1"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/tt" object-type="user" pool-name="post-gre-sql_postgres_postgresPool"/>
 </resources>
