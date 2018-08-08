@@ -10,7 +10,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
+
 import javax.persistence.Query;
 
 /**
@@ -59,6 +59,10 @@ public class DAOContato {
         return q.getResultList();
     }
     
+    public List<Contato> findByLetra(String letra){
+        Query q = em.createQuery("Select c from Contato c where c.nome like '"+ letra +"%' order by c.nome ");
+        return q.getResultList();
+    }
     public void remove(Contato contato)
     {
         try {

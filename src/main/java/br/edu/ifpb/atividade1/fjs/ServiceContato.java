@@ -12,8 +12,8 @@ import java.util.List;
  *
  * @author laerton
  */
-public class ServiceContato {
- 
+public class ServiceContato 
+{
     private DAOContato dao = new DAOContato();
     
     public Contato save (Contato contato){
@@ -24,12 +24,32 @@ public class ServiceContato {
         return dao.update(contato);
     }
     
-    public List<String> listaLetras(){
+    public void remove (Contato contato){
+        dao.remove(contato);
+    }
+    
+    public Contato findByNome(String nome){
+        return dao.findByNome(nome);
+    }
+    
+    public List<Contato> contatos(){
+        return dao.findAllByOrderNome();
+    }
+    
+    public List<String> findLetras(){
+        List<Contato> contatos = contatos();
         List<String> letras = new LinkedList<>();
-        
-        
-        
+        for (Contato contato : contatos) {
+            String letra = String.valueOf(contato.getNome().toCharArray()[0]).toUpperCase();
+            if (!letras.contains(letra)){
+                letras.add(letra);
+            }
+        }
         return letras;
+    }
+    
+    public List<Contato> findContatoLetra(String letra){
+        return dao.findByLetra(letra);
     }
     
 }
